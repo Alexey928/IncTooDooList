@@ -1,10 +1,12 @@
 import React from 'react';
 import Button from "./Button/Button";
 import TuDooTytel from "./ToDooTytel/TuDooTytel";
+import {tuduTascsType} from "../../App";
 
 
 type TudoolistPropsType = {
     tytel:string
+    tascs:Array<tuduTascsType>
 }
 
 const Tudoolist = (props:TudoolistPropsType) => {

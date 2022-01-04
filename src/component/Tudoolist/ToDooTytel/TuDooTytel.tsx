@@ -2,6 +2,8 @@ import React from 'react';
 type ToDooListTytelPropsType={
     tytel:string
 }
+
+
 const TuDooTytel = (props:ToDooListTytelPropsType) => {
     return (
         <h3>
