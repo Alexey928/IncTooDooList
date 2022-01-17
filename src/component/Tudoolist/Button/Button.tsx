@@ -1,11 +1,16 @@
 import React from 'react';
+import style from "./Button.module.css"
+import {filterValueType} from "../../../App";
+
 type ButtonPropsType ={
-    tytel:string
+    tytel:filterValueType,
+    chengeFilter: (filter:filterValueType)=> void
 }
 
-const Button = (props:ButtonPropsType) => {
+const Button:React.FC<ButtonPropsType>=({tytel,chengeFilter}) => {
+    const onButonClick = ()=>{chengeFilter(tytel)}
     return (
-        <button>{props.tytel}</button>
+        <button className={style.button} onClick={onButonClick}>{tytel}</button>
     );
 };
 export default Button;
