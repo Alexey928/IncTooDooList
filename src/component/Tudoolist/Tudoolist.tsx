@@ -11,15 +11,18 @@ type TudoolistPropsType = {
     remuveTask:(id:string)=> void //!!!! <---t exept id
     chengeFilter:(filter:filterValueType)=> void
     addTasc:(inpVal:string)=> void
-
+    chengeTascStatus:(TasckID:string,isDone:boolean)=>void,
+    fileter:filterValueType,
 }
 
 const Tudoolist:React.FC<TudoolistPropsType> = ({
      tytel,
      tascs,
      remuveTask,
-    chengeFilter,
-    addTasc
+     chengeFilter,
+     addTasc,
+     chengeTascStatus,
+     fileter
                 }) => {
 
     return (
@@ -32,13 +35,14 @@ const Tudoolist:React.FC<TudoolistPropsType> = ({
                     id={t.id}
                     tytel={t.tytel}
                     isDone={t.isDone}
-                    remuveTask = {remuveTask}/>
+                    remuveTask = {remuveTask}
+                    chengeTascStatus = { chengeTascStatus}/>
                 )}
             </ul>
             <div>
-                <Button tytel={"All"} chengeFilter = {chengeFilter}/>
-                <Button tytel={"Active"} chengeFilter = {chengeFilter}/>
-                <Button tytel={"Complited"} chengeFilter = {chengeFilter}/>
+                <Button tytel={"All"} chengeFilter = {chengeFilter} activ = {fileter==="All"}/>
+                <Button tytel={"Active"} chengeFilter = {chengeFilter} activ = {fileter==="Active"}/>
+                <Button tytel={"Complited"} chengeFilter = {chengeFilter} activ = {fileter==="Complited"}/>
             </div>
         </div>
 

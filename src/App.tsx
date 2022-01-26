@@ -4,7 +4,6 @@ import Tudoolist from "./component/Tudoolist/Tudoolist";
 import {v1} from "uuid";
 
 
-
 export  type tuduTascsType = {
     id: string,
     tytel: string
@@ -23,13 +22,16 @@ function App() {
         {id: v1(), tytel: "Jquery", isDone: false},
         {id: v1(), tytel: "Jquery", isDone: true},
     ]);
+    const chengeTascStatus = (TasckID: string, isDone: boolean) => {
+        setTascs(tasks.map((t) => t.id === TasckID ? {...t, isDone: isDone} : t));  //isDone можно сократить не переименовывая просто пишем isDone
+    }
     const remuveTask = (id: string) => {
         const filteredTask = tasks.filter(t => t.id !== id)
         setTascs(filteredTask)
     }
-    const addTask = (inpVal:string)=>{
-        const newTasc: tuduTascsType = {id:v1(),tytel:inpVal,isDone:false}
-        const updateTascs :Array<tuduTascsType> = [newTasc, ...tasks]
+    const addTask = (inpVal: string) => {
+        const newTasc: tuduTascsType = {id: v1(), tytel: inpVal, isDone: false}
+        const updateTascs: Array<tuduTascsType> = [newTasc, ...tasks]
         setTascs(updateTascs);
     }
 
@@ -55,7 +57,8 @@ function App() {
 
     return (
         <div className={"App"}>
-            <Tudoolist tytel={FirstTytel} tascs={taskForRender} remuveTask={remuveTask} chengeFilter={chengeFilter} addTasc = {addTask}/>
+            <Tudoolist tytel={FirstTytel} tascs={taskForRender} remuveTask={remuveTask} chengeFilter={chengeFilter}
+                       addTasc={addTask} chengeTascStatus={chengeTascStatus} fileter = {filter} />
         </div>)
 }
 

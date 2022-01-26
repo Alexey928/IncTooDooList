@@ -6,3 +6,10 @@
 .App > div {
   margin-right: 50px;
 }
+.isDone{
+  opacity: 30%;
+}
+.eror{
+  background-color: red;
+  opacity: 30%;
+}
